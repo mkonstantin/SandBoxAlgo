@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"sandboxProject/elementary"
+	"sandboxProject/panic_lesson"
 )
 
 func main() {
 	fmt.Println("Start program")
 
-	learn := elementary.Elementary{}
+	//learn := elementary.Elementary{}
+	learn := panic_lesson.PanicLesson{}
 	learn.Start()
 }
 

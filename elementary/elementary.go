@@ -33,6 +33,8 @@ type Man struct {
 // запускаем проект
 type Elementary struct{}
 
+// Проверяем работу со "Встроенными" типами
+// в случаях если этот тип Структура или Интерфейс
 func (e *Elementary) Start() {
 	man := Man{
 		Human: Human{
