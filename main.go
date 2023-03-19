@@ -15,7 +15,7 @@ func main() {
 	//learn.Start()
 	//learn := leetcode.DataStructureOne{}
 	//learn.Start()
-	learn := leetcode.DataStructureTwo{}
+	learn := leetcode.Binary{}
 	learn.Start()
 }
 
