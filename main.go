@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"sandboxProject/arrays"
+	"sandboxProject/leetcode"
 )
 
 func main() {
@@ -10,7 +10,12 @@ func main() {
 
 	//learn := elementary.Elementary{}
 	//learn := panic_lesson.PanicLesson{}
-	learn := arrays.ArraysExamples{}
+	//learn := types.TypesExamples{}
+	//learn := leetcode.LessonsOne{}
+	//learn.Start()
+	//learn := leetcode.DataStructureOne{}
+	//learn.Start()
+	learn := leetcode.DataStructureTwo{}
 	learn.Start()
 }
 
