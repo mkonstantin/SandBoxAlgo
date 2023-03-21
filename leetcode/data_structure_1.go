@@ -12,7 +12,7 @@ type DataStructureOne struct{}
 func (a *DataStructureOne) Start() {
 	defer exeTime("Start")()
 
-	//fmt.Println(containsDuplicate([]int{1, 2, 3, 4, 5, 6, 7, 5}))
+	fmt.Println(containsDuplicate([]int{1, 2, 3, 1}))
 
 	//merge2([]int{1, 2, 3, 0, 0, 0}, 3, []int{2, 5, 6}, 3)
 
@@ -30,7 +30,7 @@ func (a *DataStructureOne) Start() {
 
 	//startReverseList()
 
-	startRemoveList()
+	//startRemoveList()
 }
 
 // func to calculate and print execution time
@@ -41,31 +41,17 @@ func exeTime(name string) func() {
 	}
 }
 
+// https://leetcode.com/problems/contains-duplicate
+
 func containsDuplicate(nums []int) bool {
 	defer exeTime("containsDuplicate")()
 
-	if len(nums) <= 1 {
-		return false
-	}
-
-	for i, val := range nums {
-		if i+1 < len(nums) {
-			sliceC := nums[i+1:]
-			if findInArray(val, sliceC) {
-				return true
-			}
-		}
-	}
-	return false
-}
-
-func findInArray(input int, array []int) bool {
-	defer exeTime(fmt.Sprint("findInArray %s", input))()
-
-	for _, val := range array {
-		if input == val {
+	var t = make(map[int]int)
+	for _, num := range nums {
+		if t[num] > 0 {
 			return true
 		}
+		t[num]++
 	}
 	return false
 }
