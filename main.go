@@ -17,12 +17,12 @@ func main() {
 	//learn.Start()
 	//learn := leetcode.Binary{}
 	//learn.Start()
-	//learn := leetcode.StringsOne{}
-	//learn.Start()
+	learn := leetcode.StringsOne{}
+	learn.Start()
 	//learn := leetcode.ArrayOne{}
 	//learn.Start()
-	learn := leetcode.NumberOne{}
-	learn.Start()
+	//learn := leetcode.NumberOne{}
+	//learn.Start()
 }
 
 type StartLearn interface {

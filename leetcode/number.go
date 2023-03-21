@@ -8,6 +8,8 @@ func (a *NumberOne) Start() {
 	fmt.Println(a.isPowerOfThree(1162261467))
 }
 
+// https://leetcode.com/problems/power-of-three/
+
 func (a *NumberOne) isPowerOfThree(n int) bool {
 	if n == 0 {
 		return false

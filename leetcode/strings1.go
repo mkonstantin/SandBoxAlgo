@@ -11,6 +11,7 @@ func (a *StringsOne) Start() {
 	defer exeTime("Start")()
 
 	fmt.Println(a.lengthOfLastWord("sdf sdkf dsfm m m m    qwwqqq   "))
+	fmt.Println(a.repeatedSubstringPattern("a"))
 }
 
 // https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
@@ -40,4 +41,15 @@ func (a *StringsOne) searchInsert(nums []int, target int) int {
 func (a *StringsOne) lengthOfLastWord(s string) int {
 	splitted := strings.Split(strings.TrimRight(s, " "), " ")
 	return len(splitted[len(splitted)-1])
+}
+
+// https://leetcode.com/problems/repeated-substring-pattern/
+
+func (a *StringsOne) repeatedSubstringPattern(trimmed string) bool {
+	for i := 1; i < len(trimmed); i++ {
+		if strings.Count(trimmed, trimmed[0:i])*len(trimmed[0:i]) == len(trimmed) {
+			return true
+		}
+	}
+	return false
 }
