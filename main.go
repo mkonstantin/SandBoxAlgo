@@ -13,10 +13,10 @@ func main() {
 	//learn := types.TypesExamples{}
 	//learn := leetcode.LessonsOne{}
 	//learn.Start()
-	learn := leetcode.DataStructureOne{}
-	learn.Start()
-	//learn := leetcode.Binary{}
+	//learn := leetcode.DataStructureOne{}
 	//learn.Start()
+	learn := leetcode.Binary{}
+	learn.Start()
 	//learn := leetcode.StringsOne{}
 	//learn.Start()
 	//learn := leetcode.ArrayOne{}
