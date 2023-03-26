@@ -11,7 +11,8 @@ func (a *Binary) Start() {
 	defer exeTime("Start")()
 
 	//fmt.Println(a.findComplement(5))
-	fmt.Println(a.climbStairs(3))
+	//fmt.Println(a.climbStairs(3))
+	fmt.Println(a.maxSubArray([]int{1}))
 }
 
 // https://leetcode.com/problems/number-complement/
@@ -92,4 +93,24 @@ func (a *Binary) climbStairs(n int) int {
 	}
 
 	return n2
+}
+
+// https://leetcode.com/problems/maximum-subarray/
+
+func (a *Binary) maxSubArray(nums []int) int {
+	maxSum := nums[0]
+	currentSum := nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		if currentSum+nums[i] > nums[i] {
+			currentSum = currentSum + nums[i]
+		} else {
+			currentSum = nums[i]
+		}
+
+		if currentSum > maxSum {
+			maxSum = currentSum
+		}
+	}
+	return maxSum
 }

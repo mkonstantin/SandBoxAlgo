@@ -12,7 +12,7 @@ type DataStructureOne struct{}
 func (a *DataStructureOne) Start() {
 	defer exeTime("Start")()
 
-	fmt.Println(containsDuplicate([]int{1, 2, 3, 1}))
+	fmt.Println(maxProfit3([]int{7, 1, 5, 3, 6, 4}))
 
 	//merge2([]int{1, 2, 3, 0, 0, 0}, 3, []int{2, 5, 6}, 3)
 
@@ -126,7 +126,7 @@ func removeFromArray(val int, arr []int) []int {
 	return out
 }
 
-//https://leetcode.com/problems/best-time-to-buy-and-sell-stock/?envType=study-plan&id=data-structure-i
+//https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
 // Рабочий, но долгий неоптимизированный вариант
 func maxProfit2(prices []int) int {
@@ -162,6 +162,23 @@ func maxProfit(prices []int) int {
 		}
 	}
 	return profit
+}
+
+// вариант с Владом Тен
+
+func maxProfit3(prices []int) int {
+	var maxProfit = 0
+	var minimum = prices[0]
+	for _, current := range prices {
+		if current < minimum {
+			minimum = current
+			continue
+		}
+		if maxProfit < (current - minimum) {
+			maxProfit = current - minimum
+		}
+	}
+	return maxProfit
 }
 
 // https://leetcode.com/problems/pascals-triangle/description/?envType=study-plan&id=data-structure-i
