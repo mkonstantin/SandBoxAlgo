@@ -2,7 +2,6 @@ package leetcode
 
 import (
 	"fmt"
-	"math"
 	"reflect"
 	"sort"
 )
@@ -17,7 +16,7 @@ func (a *BinaryTree) Start() {
 	target := -1
 
 	//fmt.Println(a.BinarySearch(nums, target))
-	fmt.Println(BinarySearchRecurse(nums, target))
+	fmt.Println(BinaryRecurse(nums, target))
 }
 
 // https://leetcode.com/problems/same-tree/ ============
@@ -98,42 +97,56 @@ func (a *BinaryTree) SameTree1(p *TreeNode, q *TreeNode) bool {
 	return reflect.DeepEqual(p, q)
 }
 
-// https://leetcode.com/problems/binary-search/ ==============
-func (a *BinaryTree) BinarySearch(nums []int, target int) int {
-	var index = len(nums) / 2
+// BinarySearch https://leetcode.com/problems/binary-search/ ==============
 
-	//var inc = len(nums)
-	for index < len(nums) {
-		temp := nums[index]
-		if target == temp {
-			return index
+// Решение 0
+func BinarySearchSortLib(nums []int, target int) int {
+	i := sort.SearchInts(nums, target)
+
+	if i < len(nums) && nums[i] == target {
+		return i
+	}
+
+	return -1
+}
+
+// Решение 1
+func BinaryGo(nums []int, target int) int {
+	left := 0
+	right := len(nums) - 1
+
+	for right >= left {
+		mid := (left + right) / 2
+		if target == nums[mid] {
+			return mid
+		} else if target < nums[mid] {
+			right = mid - 1
 		} else {
-			if target > temp {
-				index = index + int(math.Round(float64(index)/2))
-			} else {
-				index = index - int(math.Round(float64(index)/2))
-			}
+			left = mid + 1
 		}
 	}
 	return -1
 }
 
-func BinarySearchRecurse(nums []int, target int) int {
-	var index = int(math.Round(float64(len(nums)) / 2))
-	temp := nums[index]
-	if target == temp {
-		return index
-	} else {
-		if target > temp {
-			return BinarySearchRecurse(nums[index:], target)
-		} else {
-			return BinarySearchRecurse(nums[:index], target)
-		}
+func BinaryRecurse(arr []int, x int) int {
+	// If array is empty return not found(-1)
+	if len(arr) == 0 {
+		return -1
 	}
+	return binarySearch(arr, x, 0, len(arr)-1)
 }
 
-var asd int
+func binarySearch(arr []int, x, left, right int) int {
+	if right >= left {
+		mid := (left + right) / 2
 
-func BinarySearchRecurse2(nums []int, target int) int {
-	return sort.SearchInts(nums, target)
+		if x == arr[mid] {
+			return mid
+		} else if x < arr[mid] {
+			return binarySearch(arr, x, left, mid-1)
+		} else {
+			return binarySearch(arr, x, mid+1, right)
+		}
+	}
+	return -1
 }
