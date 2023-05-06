@@ -12,7 +12,8 @@ func (a *Binary) Start() {
 
 	//fmt.Println(a.findComplement(5))
 	//fmt.Println(a.climbStairs(3))
-	fmt.Println(a.maxSubArray([]int{1}))
+	//fmt.Println(a.maxSubArray([]int{1}))
+	fmt.Println(mySqrt(65))
 }
 
 // https://leetcode.com/problems/number-complement/
@@ -113,4 +114,73 @@ func (a *Binary) maxSubArray(nums []int) int {
 		}
 	}
 	return maxSum
+}
+
+// https://leetcode.com/problems/first-bad-version/
+func firstBadVersion(n int) int {
+	left := 0
+	right := n
+
+	for left <= right {
+		mid := (left + right) / 2
+
+		if isBadVersion(mid) && !isBadVersion(mid-1) {
+			return mid
+		} else if isBadVersion(mid) {
+			right = mid - 1
+		} else {
+			left = mid + 1
+		}
+	}
+	return 0
+}
+
+func isBadVersion(version int) bool {
+	if version >= 10 {
+		return true
+	}
+	return false
+}
+
+// https://leetcode.com/problems/valid-perfect-square/
+
+func isPerfectSquare(num int) bool {
+	if num == 1 {
+		return true
+	}
+
+	left := 0
+	right := num / 2
+
+	for left <= right {
+		mid := (left + right) / 2
+
+		if mid*mid == num {
+			return true
+		} else if mid*mid > num {
+			right = mid - 1
+		} else {
+			left = mid + 1
+		}
+	}
+	return false
+}
+
+// https://leetcode.com/problems/sqrtx/
+
+func mySqrt(x int) int {
+	left := 0
+	right := x
+
+	for left <= right {
+		mid := (left + right) / 2
+		if mid*mid == x {
+			return mid
+		} else if mid*mid > x {
+			right = mid - 1
+		} else {
+			left = mid + 1
+		}
+	}
+	return right
 }
