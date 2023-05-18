@@ -2,7 +2,6 @@ package leetcode
 
 import (
 	"fmt"
-	"sort"
 	"strconv"
 )
 
@@ -14,9 +13,7 @@ func (a *Binary) Start() {
 	//fmt.Println(a.findComplement(5))
 	//fmt.Println(a.climbStairs(3))
 	//fmt.Println(a.maxSubArray([]int{1}))
-	//fmt.Println(intersection([]int{4, 9, 5, 4, 1}, []int{9, 4, 9, 8, 4, 6, 7}))
-	//fmt.Println(guessNumber(20))
-	fmt.Println(findKthPositive([]int{1, 2, 5, 7, 9}, 4))
+	fmt.Println(mySqrt(65))
 }
 
 // https://leetcode.com/problems/number-complement/
@@ -186,106 +183,4 @@ func mySqrt(x int) int {
 		}
 	}
 	return right
-}
-
-// https://leetcode.com/problems/intersection-of-two-arrays/
-
-func intersection(nums1 []int, nums2 []int) []int {
-	sort.Ints(nums1)
-	sort.Ints(nums2)
-
-	var arr []int
-	for _, num := range nums1 {
-		if searchInt(nums2, num) && !searchInt(arr, num) {
-			arr = append(arr, num)
-		}
-	}
-
-	return arr
-}
-
-func searchInt(arr []int, target int) bool {
-	left := 0
-	right := len(arr) - 1
-
-	for left <= right {
-		mid := (left + right) / 2
-
-		if target == arr[mid] {
-			return true
-		} else if target < arr[mid] {
-			right = mid - 1
-		} else {
-			left = mid + 1
-		}
-	}
-
-	return false
-}
-
-// https://leetcode.com/problems/guess-number-higher-or-lower/
-
-/**
- * Forward declaration of guess API.
- * @param  num   your guess
- * @return 	     -1 if num is higher than the picked number
- *			      1 if num is lower than the picked number
- *               otherwise return 0
- **/
-func guess(num int) int {
-	if num == 15 {
-		return 0
-	} else if num > 15 {
-		return -1
-	} else {
-		return 1
-	}
-}
-
-func guessNumber(n int) int {
-	left := 0
-	right := n
-
-	for left <= right {
-		mid := (left + right) / 2
-
-		if guess(mid) == 0 {
-			return mid
-		} else if guess(mid) == -1 {
-			right = mid - 1
-		} else {
-			left = mid + 1
-		}
-	}
-	return 0
-}
-
-// https://leetcode.com/problems/kth-missing-positive-number/
-func findKthPositive(arr []int, k int) int {
-	i := 1
-	count := 0
-	for count < k {
-		if !findNumber(arr, i) {
-			count++
-		}
-		i++
-	}
-	return i - 1
-}
-
-func findNumber(arr []int, target int) bool {
-	left := 0
-	right := len(arr) - 1
-
-	for left <= right {
-		mid := (left + right) / 2
-		if target == arr[mid] {
-			return true
-		} else if target < arr[mid] {
-			right = mid - 1
-		} else {
-			left = mid + 1
-		}
-	}
-	return false
 }

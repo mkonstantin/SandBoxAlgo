@@ -25,7 +25,7 @@ func main() {
 	//learn.Start()
 	//learn := leetcode.AlgorithmOne{}
 	//learn.Start()
-	learn := leetcode.Binary2{}
+	learn := leetcode.Binary{}
 	learn.Start()
 }
 
