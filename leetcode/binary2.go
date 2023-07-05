@@ -15,7 +15,7 @@ func (a *Binary2) Start() {
 	//fmt.Println(a.maxSubArray([]int{1}))
 	//fmt.Println(intersection([]int{4, 9, 5, 4, 1}, []int{9, 4, 9, 8, 4, 6, 7}))
 	//fmt.Println(guessNumber(20))
-	fmt.Println(findDuplicate([]int{1, 3, 2, 5, 4, 7, 6, 10, 9, 8, 11, 15, 14, 12, 13, 19, 18, 17, 15, 16}))
+	fmt.Println(peakIndexInMountainArray([]int{1, 3, 2, 5, 4, 7, 6, 10, 9, 8, 11, 15, 14, 12, 13, 19, 18, 17, 15, 16}))
 }
 
 //https://leetcode.com/problems/find-the-duplicate-number/
