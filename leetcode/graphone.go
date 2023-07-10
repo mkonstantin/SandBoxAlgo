@@ -1,6 +1,9 @@
 package leetcode
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type Graph1 struct{}
 
@@ -20,7 +23,7 @@ func (a *Graph1) Start() {
 	//fmt.Println(validPath(10, [][]int{{0, 7}, {0, 8}, {6, 1}, {2, 0}, {0, 4}, {5, 8}, {4, 7}, {1, 3}, {3, 5}, {6, 5}}, 7, 5))
 
 	//[[1,3],[2,6],[8,10],[15,18]]
-	fmt.Println(merge([][]int{{1, 4}, {4, 5}}))
+	fmt.Println(merge([][]int{{1, 4}, {2, 3}}))
 }
 
 // https://leetcode.com/problems/find-the-town-judge/
@@ -152,7 +155,12 @@ func contains(s []int, item int) bool {
 
 // https://leetcode.com/problems/merge-intervals/
 func merge(intervals [][]int) [][]int {
-	var ms = make([][]int, 19)
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i][1] < intervals[j][1]
+	})
+
+	dfg := intervals[len(intervals)-1][1]
+	var ms = make([][]int, dfg+1)
 	name := 1
 
 	for _, interval := range intervals {
