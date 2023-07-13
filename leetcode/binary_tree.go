@@ -3,6 +3,7 @@ package leetcode
 import (
 	"fmt"
 	"reflect"
+	"sandboxProject/formulas/quicksort"
 	"sort"
 )
 
@@ -12,11 +13,13 @@ type BinaryTree struct {
 func (a *BinaryTree) Start() {
 
 	//fmt.Println(a.SameTree(p, q))
-	nums := []int{-1, 0, 3, 5, 9, 12}
-	target := -1
+	//nums := []int{-1, 0, 3, 5, 9, 12}
+	//target := -1
 
 	//fmt.Println(a.BinarySearch(nums, target))
-	fmt.Println(BinaryRecurse(nums, target))
+	//fmt.Println(BinaryRecurse(nums, target))
+
+	fmt.Println(getMinimumDifference(root1))
 }
 
 // https://leetcode.com/problems/same-tree/ ============
@@ -149,4 +152,79 @@ func binarySearch(arr []int, x, left, right int) int {
 		}
 	}
 	return -1
+}
+
+// https://leetcode.com/problems/minimum-absolute-difference-in-bst/
+// [4,2,6,1,3]
+// [1,0,48,null,null,12,49]
+var (
+	root1 = &TreeNode{
+		Val:   1,
+		Left:  l1,
+		Right: r1,
+	}
+
+	l1 = &TreeNode{
+		Val:   0,
+		Left:  nil,
+		Right: nil,
+	}
+
+	r1 = &TreeNode{
+		Val: 48,
+		Left: &TreeNode{
+			Val:   12,
+			Left:  nil,
+			Right: nil,
+		},
+		Right: &TreeNode{
+			Val:   49,
+			Left:  nil,
+			Right: nil,
+		},
+	}
+)
+
+func getMinimumDifference(root *TreeNode) int {
+	zxc := makeArray(root)
+	quicksort.QuickSort(zxc, 0, len(zxc)-1)
+	min := zxc[len(zxc)-1]
+
+	for i := 1; i < len(zxc); i++ {
+		s := zxc[i] - zxc[i-1]
+		if s < min {
+			min = s
+		}
+	}
+	return min
+}
+
+func makeArray(t *TreeNode) []int {
+	var ms = []*TreeNode{t}
+
+	var n = 1
+	for i := 0; i < n; i++ {
+		n = n + len(getNodes(ms[i]))
+		ms = append(ms, getNodes(ms[i])...)
+	}
+
+	var ints []int
+	for _, m := range ms {
+		ints = append(ints, m.Val)
+	}
+
+	return ints
+}
+
+func getNodes(t *TreeNode) []*TreeNode {
+	var ms []*TreeNode
+	if t != nil {
+		if t.Left != nil {
+			ms = append(ms, t.Left)
+		}
+		if t.Right != nil {
+			ms = append(ms, t.Right)
+		}
+	}
+	return ms
 }
