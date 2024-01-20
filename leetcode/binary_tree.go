@@ -3,8 +3,9 @@ package leetcode
 import (
 	"fmt"
 	"reflect"
-	"sandboxProject/formulas/quicksort"
 	"sort"
+
+	"sandboxProject/formulas/quicksort"
 )
 
 type BinaryTree struct {
@@ -184,6 +185,8 @@ var (
 		},
 	}
 )
+
+// https://leetcode.com/problems/minimum-absolute-difference-in-bst/
 
 func getMinimumDifference(root *TreeNode) int {
 	zxc := makeArray(root)

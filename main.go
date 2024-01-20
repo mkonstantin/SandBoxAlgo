@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"sandboxProject/leetcode"
+
+	"sandboxProject/concurency"
 )
 
 func main() {
@@ -29,7 +30,12 @@ func main() {
 	//learn.Start()
 	//learn := leetcode.Graph1{}
 	//learn.Start()
-	learn := leetcode.BinaryTree{}
+	//learn := leetcode.BinaryTree{}
+	//learn.Start()
+	//learn := leetcode.StringsOne{}
+	//learn.Start()
+
+	learn := concurency.GoroutineOne{}
 	learn.Start()
 }
 
