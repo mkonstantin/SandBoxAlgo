@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"sandboxProject/concurency"
+	"sandboxProject/examples"
 )
 
 func main() {
@@ -34,8 +34,10 @@ func main() {
 	//learn.Start()
 	//learn := leetcode.StringsOne{}
 	//learn.Start()
+	//learn := concurency.GoroutineOne{}
+	//learn.Start()
 
-	learn := concurency.GoroutineOne{}
+	learn := examples.ExamplesOne{}
 	learn.Start()
 }
 
