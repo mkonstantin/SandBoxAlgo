@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"sandboxProject/examples"
+	"sandboxProject/memory"
 )
 
 func main() {
@@ -36,8 +36,10 @@ func main() {
 	//learn.Start()
 	//learn := concurency.GoroutineOne{}
 	//learn.Start()
+	//learn := examples.ExamplesOne{}
+	//learn.Start()
 
-	learn := examples.ExamplesOne{}
+	learn := memory.MemoryThree{}
 	learn.Start()
 }
 
