@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"sandboxProject/memory"
+	"sandboxProject/exp_context"
 )
 
 func main() {
@@ -38,8 +38,13 @@ func main() {
 	//learn.Start()
 	//learn := examples.ExamplesOne{}
 	//learn.Start()
-
-	learn := memory.MemoryThree{}
+	//learn := memory.MemoryThree{}
+	//learn.Start()
+	//learn := arrays.ArrayTwo{}
+	//learn.Start()
+	//learn := examples.ExamplesTwo{}
+	//learn.Start()
+	learn := exp_context.TimeoutContext{}
 	learn.Start()
 }
 
