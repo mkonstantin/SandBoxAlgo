@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"sandboxProject/exp_context"
+	"sandboxProject/stepik"
 )
 
 func main() {
@@ -44,7 +44,9 @@ func main() {
 	//learn.Start()
 	//learn := examples.ExamplesTwo{}
 	//learn.Start()
-	learn := exp_context.TimeoutContext{}
+	//learn := exp_context.TimeoutContext{}
+	//learn.Start()
+	learn := stepik.ArraysAndSlices{}
 	learn.Start()
 }
 
