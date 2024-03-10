@@ -46,7 +46,7 @@ func main() {
 	//learn.Start()
 	//learn := exp_context.TimeoutContext{}
 	//learn.Start()
-	learn := stepik.ArraysAndSlices{}
+	learn := stepik.StructuresOne{}
 	learn.Start()
 }
 
